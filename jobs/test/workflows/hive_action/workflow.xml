@@ -1,0 +1,22 @@
+<workflow-app name="oozie_hive_action_test" xmlns="uri:oozie:workflow:0.4">
+    <start to="oozie_hive_action_test"/>
+    <action name="oozie_hive_action_test">
+        <hive xmlns="uri:oozie:hive-action:0.2">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>oozie.action.sharelib.for.hive</name>
+                    <value>hive,hcatalog,sqoop</value>
+                </property>
+            </configuration>
+            <script>create_as.hql</script>
+        </hive>
+        <ok to="end"/>
+        <error to="kill"/>
+    </action>
+    <kill name="kill">
+        <message>Action failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="end"/>
+</workflow-app>

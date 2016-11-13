@@ -1,0 +1,1 @@
+select count(1) from xademo.call_detail_records

@@ -1,0 +1,29 @@
+<workflow-app xmlns='uri:oozie:workflow:0.5' name='SparkFileCopy'>
+    <start to='spark-node' />
+
+    <action name='spark-node'>
+        <spark xmlns="uri:oozie:spark-action:0.1">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <prepare>
+                <delete path="${nameNode}/user/idir/oozie/jobs/test/workflows/spark_action/output-data/spark"/>
+            </prepare>
+            <master>${master}</master>
+            <name>Spark-FileCopy</name>
+            <class>org.apache.oozie.example.SparkFileCopy</class>
+            <jar>${nameNode}/user/idir/oozie/jobs/test/workflows/spark_action/oozie-examples-4.4.0-SNAPSHOT.jar</jar>
+            <spark-opts>--driver-memory 512m --executor-memory 512m --num-executors 1</spark-opts> 
+            <arg>${nameNode}/user/idir/oozie/jobs/test/workflows/spark_action/data.txt</arg>
+            <arg>${nameNode}/user/idir/oozie/jobs/test/workflows/spark_action/output-data/spark</arg>
+        </spark>
+        <ok to="end" />
+        <error to="fail" />
+    </action>
+
+    <kill name="fail">
+        <message>Workflow failed, error
+            message[${wf:errorMessage(wf:lastErrorNode())}]
+        </message>
+    </kill>
+    <end name='end' />
+</workflow-app>

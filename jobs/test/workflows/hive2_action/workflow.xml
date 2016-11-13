@@ -1,0 +1,17 @@
+<workflow-app name="oozie_hive2_action_test" xmlns="uri:oozie:workflow:0.4">
+    <start to="oozie_hive2_action_test"/>
+    <action name="oozie_hive2_action_test">
+        <hive2 xmlns="uri:oozie:hive2-action:0.1">
+             <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <jdbc-url>jdbc:hive2://localhost:10000/default</jdbc-url>
+            <script>create_as.hql</script>
+        </hive2>
+        <ok to="end"/>
+        <error to="kill"/>
+    </action>
+    <kill name="kill">
+        <message>Action failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="end"/>
+</workflow-app>

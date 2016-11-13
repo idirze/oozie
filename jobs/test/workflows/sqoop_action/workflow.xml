@@ -1,0 +1,16 @@
+<workflow-app xmlns="uri:oozie:workflow:0.4" name="oozie_sqoop_action_test">
+    <start to="sqoop-wf1"/>
+    <action name="sqoop-wf1">
+        <sqoop xmlns="uri:oozie:sqoop-action:0.2">
+                <job-tracker>${jobTracker}</job-tracker>
+                <name-node>${nameNode}</name-node>
+                <command>import --connect jdbc:mysql://localhost:3306/ranger --username root --table x_user  --hive-import --hive-overwrite --hive-table xademo.ranger_x_user_hive</command>
+        </sqoop>
+        <ok to="end"/>
+        <error to="fail"/>
+    </action> 
+    <kill name="fail">
+        <message>Failed, Error Message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="end"/>
+</workflow-app>
