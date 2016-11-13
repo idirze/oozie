@@ -21,6 +21,7 @@ https://community.hortonworks.com/questions/8552/hive-action-in-failing-in-oozie
 =============
 
 1. Copy mysql jdbc connector if not exists.
+
    sudo -u oozie hdfs dfs -put /usr/share/java/mysql-connector-java.jar /user/oozie/share/lib/lib_20151027124452/sqoop/
    
 
