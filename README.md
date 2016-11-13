@@ -31,7 +31,8 @@ https://community.hortonworks.com/questions/8552/hive-action-in-failing-in-oozie
 https://community.hortonworks.com/articles/48920/how-to-run-spark-action-in-oozie-of-hdp-230.html
 
 
-
+Oozie Spark action is not supported, but there is a tech note available for HDP customers:
+http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.4/bk_spark-guide/content/ch_introduction-spark.html
 
 
 
