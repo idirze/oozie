@@ -3,7 +3,10 @@ https://community.hortonworks.com/questions/8552/hive-action-in-failing-in-oozie
 ## Hive Action:
 ============
 
-sudo -u oozie hdfs dfs -put /usr/hdp/2.3.2.0-2950/atlas/hook/hive/* /user/oozie/share/lib/lib_20151027124452/hive
+1. sudo -u oozie hdfs dfs -put /usr/hdp/2.3.2.0-2950/atlas/hook/hive/* /user/oozie/share/lib/lib_20151027124452/hive
+2. Update oozie sharelib: 
+oozie admin -oozie http://<oozie-server>:11000/oozie -sharelibupdate 
+
 add a property oozie.action.sharelib.for.hive = hive,hcatalog,sqoop in Oozie parameters.
 
 
@@ -14,7 +17,8 @@ add a property oozie.action.sharelib.for.hive = hive,hcatalog,sqoop in Oozie par
 
    sudo -u oozie hdfs dfs -put /usr/share/java/mysql-connector-java.jar /user/oozie/share/lib/lib_20151027124452/sqoop/
    
-2. Restart Oozie
+2. Update oozie sharelib: 
+oozie admin -oozie http://<oozie-server>:11000/oozie -sharelibupdate 
    
 ## Sapak Action
 
