@@ -26,6 +26,11 @@ https://community.hortonworks.com/questions/8552/hive-action-in-failing-in-oozie
    
 2. Restart Oozie
    
+## Sapak Action
+
+https://community.hortonworks.com/articles/48920/how-to-run-spark-action-in-oozie-of-hdp-230.html
+
+
 
 
 
