@@ -7,9 +7,6 @@ https://community.hortonworks.com/questions/8552/hive-action-in-failing-in-oozie
 2. Update oozie sharelib: 
 oozie admin -oozie http://<oozie-server>:11000/oozie -sharelibupdate 
 
-add a property oozie.action.sharelib.for.hive = hive,hcatalog,sqoop in Oozie parameters.
-
-
 ## Sqoop Action:
 =============
 
